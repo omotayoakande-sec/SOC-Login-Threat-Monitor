@@ -283,6 +283,28 @@ index=login_logs status="success"
 
 ---
 
+## Screenshots
+
+### Dashboard overview
+<img width="1919" height="775" alt="image" src="https://github.com/user-attachments/assets/e75a2644-1ef7-4341-ac71-41c36d6fa67e" />
+
+
+
+### Login attempts over time - brute-force spike visible at 1PM
+<img width="1917" height="615" alt="image" src="https://github.com/user-attachments/assets/6fa0a413-4bc2-41b0-9f27-2df39299b08f" />
+
+
+### Credential stuffing detection 
+<img width="1651" height="793" alt="image" src="https://github.com/user-attachments/assets/6f5cac5a-5058-44c1-9808-c375398226a6" />
+<img width="1915" height="642" alt="image" src="https://github.com/user-attachments/assets/99d95aec-d819-42f3-b7f1-2f95c1323ee8" />
+
+
+### Brute-force alert configuration
+<img width="1917" height="458" alt="image" src="https://github.com/user-attachments/assets/17b6aa67-9c25-4008-9b93-6add977f5b05" />
+
+
+---
+
 ## About
 
 This project was completed as part of a SOC analyst training programme. It covers the complete threat investigation lifecycle from raw log ingestion to documented incident report, the same workflow used in real-world Security Operations Centres.
