@@ -1,5 +1,5 @@
 # SOC-Login-Threat-Monitor
-### Splunk Enterprise — Authentication Log Analysis & Threat Detection
+### Splunk Enterprise - Authentication Log Analysis & Threat Detection
 
 ![Platform](https://img.shields.io/badge/Platform-Splunk%20Enterprise-orange)
 ![Status](https://img.shields.io/badge/Project%20Status-Complete-brightgreen)
@@ -67,7 +67,7 @@ The dataset contains authentication log events from a simulated corporate enviro
 
 ## Project Phases
 
-### Phase 1 — Data import & basic search
+### Phase 1  Data import & basic search
 - Uploaded `splunk_login_dataset.csv` to Splunk Enterprise
 - Configured source type `csv`, host `lab-splunk01`, index `login_logs`
 - Ran 4 core SPL queries to establish baseline metrics
@@ -83,7 +83,7 @@ index=login_logs status="failed" | stats count by username src_ip location | sor
 
 ---
 
-### Phase 2 — Log correlation & pattern detection
+### Phase 2  Log correlation & pattern detection
 - Correlated username, IP, and location fields together
 - Identified alice brute-force burst (10 attempts in 9 minutes)
 - Flagged `8.8.8.8` (Google DNS) appearing as a login source is impossible in legitimate traffic
@@ -91,7 +91,7 @@ index=login_logs status="failed" | stats count by username src_ip location | sor
 
 ---
 
-### Phase 3 — Visualisations & dashboard
+### Phase 3  Visualisations & dashboard
 
 Built 4 chart types and assembled into the **SOC Login Threat Monitor** dashboard:
 
@@ -104,11 +104,11 @@ Built 4 chart types and assembled into the **SOC Login Threat Monitor** dashboar
 
 ---
 
-### Phase 4 — Alerts & automated detection
+### Phase 4  Alerts & automated detection
 
 Three production-style alerts configured in Splunk:
 
-#### Alert 1 — Brute force login detection
+#### Alert 1  Brute force login detection
 ```spl
 index=login_logs status="failed"
 | bucket _time span=5m
@@ -118,7 +118,7 @@ index=login_logs status="failed"
 - Schedule: `*/5 * * * *` (every 5 minutes)
 - Severity: **Critical**
 
-#### Alert 2 — Unknown geolocation login
+#### Alert 2  Unknown geolocation login
 ```spl
 index=login_logs status="failed" location="Unknown"
 | stats count by username src_ip location
@@ -126,7 +126,7 @@ index=login_logs status="failed" location="Unknown"
 - Schedule: `*/15 * * * *` (every 15 minutes)
 - Severity: **High**
 
-#### Alert 3 — Impossible travel / multiple source IPs
+#### Alert 3  Impossible travel / multiple source IPs
 ```spl
 index=login_logs
 | bucket _time span=1h
@@ -138,7 +138,7 @@ index=login_logs
 
 ---
 
-### Phase 5 — Geolocation & IP enrichment
+### Phase 5  Geolocation & IP enrichment
 
 Used Splunk's built-in `iplocation` command to resolve IP addresses to geographic data:
 
@@ -155,11 +155,11 @@ Added choropleth world map panel to dashboard showing attack origin by country.
 
 ---
 
-### Phase 6 — Attack simulation & detection
+### Phase 6  Attack simulation & detection
 
 Three real-world attack scenarios were simulated by injecting events into the dataset:
 
-#### Scenario 1 — Credential stuffing
+#### Scenario 1  Credential stuffing
 **Pattern:** One IP hitting 10 different usernames within seconds
 
 ```
@@ -176,7 +176,7 @@ index=login_logs src_ip="45.33.32.156"
 
 ---
 
-#### Scenario 2 — Password spray
+#### Scenario 2  Password spray
 **Pattern:** One IP slowly targeting all accounts to avoid lockout
 
 ```
@@ -196,7 +196,7 @@ index=login_logs status="failed"
 
 ---
 
-#### Scenario 3 — Insider threat
+#### Scenario 3  Insider threat
 **Pattern:** Legitimate user accessing system between 2:00–3:00 AM
 
 ```
