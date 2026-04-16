@@ -11,7 +11,7 @@
 
 ## Overview
 
-A complete SOC (Security Operations Centre) analyst project built on Splunk Enterprise. This project simulates a real-world threat investigation workflow — from raw log ingestion through to attack detection, dashboard visualisation, automated alerting, geolocation enrichment, and full incident documentation.
+A complete SOC (Security Operations Centre) analyst project built on Splunk Enterprise. This project simulates a real-world threat investigation workflow from raw log ingestion through to attack detection, dashboard visualisation, automated alerting, geolocation enrichment, and full incident documentation.
 
 The dataset contains authentication log events from a simulated corporate environment. Three attack scenarios were injected and successfully detected using custom SPL queries.
 
@@ -86,7 +86,7 @@ index=login_logs status="failed" | stats count by username src_ip location | sor
 ### Phase 2 — Log correlation & pattern detection
 - Correlated username, IP, and location fields together
 - Identified alice brute-force burst (10 attempts in 9 minutes)
-- Flagged `8.8.8.8` (Google DNS) appearing as a login source — impossible in legitimate traffic
+- Flagged `8.8.8.8` (Google DNS) appearing as a login source is impossible in legitimate traffic
 - Detected henry logging in from 6 different cities in one day (impossible travel)
 
 ---
@@ -232,9 +232,9 @@ index=login_logs status="success"
 
 1. **Block** `203.0.113.45`, `45.33.32.156`, and `91.108.4.0/24` at the perimeter firewall
 2. **Lock** alice's account pending investigation
-3. **Enable MFA** for all user accounts — would have neutralised all simulated attacks
+3. **Enable MFA** for all user accounts would have neutralised all simulated attacks
 4. **Implement account lockout** after 5 failed attempts within 10 minutes
-5. **Investigate** `8.8.8.8` appearing as a login source — indicates spoofing or misconfiguration
+5. **Investigate** `8.8.8.8` appearing as a login source, indicates spoofing or misconfiguration
 6. **Expand log ingestion** to include firewall, DNS, and endpoint logs for cross-source correlation
 
 ---
@@ -247,7 +247,7 @@ index=login_logs status="success"
 | Search & investigation | SPL — `stats`, `timechart`, `bucket`, `dc()`, `eval`, `strftime` |
 | Pattern correlation | Multi-field `stats count by username src_ip location` |
 | Data visualisation | Line, bar, pie, column charts + choropleth map |
-| Dashboard building | Splunk Classic Dashboards — 8 panels |
+| Dashboard building | Splunk Classic Dashboards  8 panels |
 | Automated alerting | Saved searches with cron scheduling |
 | Geolocation enrichment | `iplocation` command + IP threat classification |
 | Attack simulation | Credential stuffing, password spray, insider threat patterns |
@@ -285,7 +285,7 @@ index=login_logs status="success"
 
 ## About
 
-This project was completed as part of a SOC analyst training programme. It covers the complete threat investigation lifecycle from raw log ingestion to documented incident report — the same workflow used in real-world Security Operations Centres.
+This project was completed as part of a SOC analyst training programme. It covers the complete threat investigation lifecycle from raw log ingestion to documented incident report, the same workflow used in real-world Security Operations Centres.
 
 ---
 
